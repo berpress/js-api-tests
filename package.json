@@ -1,0 +1,24 @@
+{
+  "name": "js-api-tests",
+  "version": "1.0.0",
+  "description": "Js API testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest ./tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/berpress/js-api-tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/berpress/js-api-tests/issues"
+  },
+  "homepage": "https://github.com/berpress/js-api-tests#readme",
+  "devDependencies": {
+    "axios": "^0.21.4",
+    "faker": "^5.5.3",
+    "jest": "^27.1.1"
+  }
+}
