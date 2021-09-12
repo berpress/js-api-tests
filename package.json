@@ -15,8 +15,10 @@
   "bugs": {
     "url": "https://github.com/berpress/js-api-tests/issues"
   },
+  "type": "module",
   "homepage": "https://github.com/berpress/js-api-tests#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "axios": "^0.21.4",
     "faker": "^5.5.3",
     "jest": "^27.1.1"
