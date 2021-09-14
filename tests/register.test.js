@@ -1,17 +1,28 @@
 const faker = require('faker');
+const { RegistrationSchema } = require('../schemas/registration');
+const { RegisterUserController } = require('../api/controller/register.controller');
 
-import {RegisterUserController} from '../api/controller/register.controller'
+describe('Registration', () => {
+  const schema = new RegistrationSchema();
+  it('user with valid data', async () => {
+    const data = {
+      username: faker.internet.email(),
+      password: faker.internet.password(),
+    };
+    const register = new RegisterUserController();
+    const response = await register.register(data, schema.addSchema);
+    expect(response.status).toBe(201);
+    expect(response.data.message).toBe('User created successfully.');
+  });
 
-describe('Registration', function () {
-    it('user with valid data', async function () {
-        const data = {
-                username: faker.internet.email(),
-                password: faker.internet.password()
-            }
-        const register = new RegisterUserController();
-        const response = await register.register(data);
-        console.log(response.data);
-        expect(response.status).toBe(201);
-        expect(response.data.message).toBe('User created successfully.')
-        })
-})
+  it('user with empty username', async () => {
+    const data = {
+      username: null,
+      password: faker.internet.password(),
+    };
+    const register = new RegisterUserController();
+    const response = await register.register(data, schema.addSchema);
+    expect(response.status).toBe(400);
+    expect(response.data.message).toBe('Username and password are required fields');
+  });
+});
