@@ -1,6 +1,7 @@
 const faker = require('faker');
 const { RegistrationSchema } = require('../schemas/registration');
 const { RegisterUserController } = require('../api/controller/register.controller');
+const ADD_REGISTRATION_SCHEMA = require('../schemas/registration');
 
 describe('Registration', () => {
   const schema = new RegistrationSchema();
@@ -21,7 +22,7 @@ describe('Registration', () => {
       password: faker.internet.password(),
     };
     const register = new RegisterUserController();
-    const response = await register.register(data, schema.addSchema);
+    const response = await register.register(data, ADD_REGISTRATION_SCHEMA);
     expect(response.status).toBe(400);
     expect(response.data.message).toBe('Username and password are required fields');
   });

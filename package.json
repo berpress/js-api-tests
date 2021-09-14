@@ -4,7 +4,8 @@
   "description": "Js API testing",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./tests/"
+    "test": "jest ./tests/",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,15 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
     "faker": "^5.5.3",
+    "git-format-staged": "^2.1.2",
+    "husky": "^7.0.2",
     "jest": "^27.1.1",
-    "joi": "^17.4.2"
+    "joi": "^17.4.2",
+    "lint-staged": "^11.1.2",
+    "pre-commit": "^1.2.2",
+    "pretty-quick": "^3.1.1"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
