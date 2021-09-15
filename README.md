@@ -15,7 +15,7 @@ git: https://github.com/berpress/flask-restful-api
 
 url: https://stores-tests-api.herokuapp.com
 
-###How to start
+### How to start
 
 Use js
 
