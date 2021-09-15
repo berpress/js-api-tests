@@ -15,4 +15,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: jest ./tests/
+    - run: npx jest ./tests/
