@@ -1,4 +1,4 @@
-# JavaScript API test
+# JavaScript API tests
 
 This is a tutorial project that shows how to implement api tests in JS
 
