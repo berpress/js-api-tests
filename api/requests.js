@@ -26,7 +26,8 @@ class Requests {
     return this;
   }
 
-  headers(headers) {
+  headers(token) {
+    const headers = { token };
     this.options = { ...this.options, headers };
     return this;
   }
