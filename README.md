@@ -1,4 +1,5 @@
 # JavaScript API tests
+[![NodeJS Tests CI](https://github.com/berpress/js-api-tests/actions/workflows/tests.yml/badge.svg)](https://github.com/berpress/js-api-tests/actions/workflows/tests.yml)
 
 This is a tutorial project that shows how to implement api tests in JS
 
