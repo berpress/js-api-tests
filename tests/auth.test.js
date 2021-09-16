@@ -1,5 +1,8 @@
 import ADD_REGISTRATION_SCHEMA from '../schemas/registration';
-import AUTH_USER_SCHEMA from '../schemas/auth';
+import {
+  AUTH_USER_ERROR_SCHEMA,
+  AUTH_USER_SCHEMA,
+} from '../schemas/auth';
 
 import ApiClient from '../api/client';
 
@@ -17,5 +20,15 @@ describe('Auth', () => {
     expect(response.data.message).toBe('User created successfully.');
     const responseAuth = await client.auth.auth(data, AUTH_USER_SCHEMA);
     expect(responseAuth.status).toBe(200);
+  });
+
+  it('none created user', async () => {
+    const client = new ApiClient();
+    const data = {
+      username: faker.internet.email(),
+      password: faker.internet.password(),
+    };
+    const responseAuth = await client.auth.auth(data, AUTH_USER_ERROR_SCHEMA);
+    expect(responseAuth.status).toBe(401);
   });
 });

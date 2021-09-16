@@ -15,5 +15,10 @@ class ApiClient {
     this.register = new RegisterUserController(mergedParams);
     this.auth = new AuthUserController(mergedParams);
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  unauthorized() {
+    return new ApiClient();
+  }
 }
 export default ApiClient;

@@ -1,12 +1,12 @@
 import validate from '../validator';
 import Requests from '../requests';
-import BASE_URL from '../constants';
 import BaseController from './base.controller';
+import CONFIG from '../../env';
 
 const client = new Requests();
 class AuthUserController extends BaseController {
   async auth(data, schema) {
-    const response = await client.url(`${(BASE_URL)}/auth`).headers(this.params.token).method('POST').body(data)
+    const response = await client.url(`${(CONFIG.BASE_URL)}/auth`).headers(this.params.token).method('POST').body(data)
       .send();
     validate(schema, response.data);
     return response;
