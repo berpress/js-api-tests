@@ -1,5 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import axios from 'axios';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import pino from 'pino';
+
+const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true, colorize: true });
 
 class Requests {
   constructor() {
@@ -32,13 +36,17 @@ class Requests {
     return this;
   }
 
-  async send() {
-    return axios({
+  async send(nameRequest) {
+    logger.info(nameRequest);
+    logger.info(`Request: method is ${this.options.method}, url is ${this.options.url}, body is ${JSON.stringify(this.options.data, null, 4)}`);
+    const response = await axios({
       ...this.options,
-    }).catch((error) =>
-    // handle error
-    // eslint-disable-next-line implicit-arrow-linebreak
-      error.response);
+    }).catch((error) => {
+      logger.info(`Status code is ${error.response.status}`);
+      return error.response;
+    });
+    logger.info(`Response: status is ${response.status},  body is ${JSON.stringify(this.options.data, null, 4)}`);
+    return response;
   }
 }
 

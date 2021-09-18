@@ -7,7 +7,7 @@ const client = new Requests();
 class AuthUserController extends BaseController {
   async auth(data, schema) {
     const response = await client.url(`${(CONFIG.BASE_URL)}/auth`).headers(this.params.token).method('POST').body(data)
-      .send();
+      .send('Auth user');
     validate(schema, response.data);
     return response;
   }
