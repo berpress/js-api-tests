@@ -1,5 +1,5 @@
-import ADD_REGISTRATION_SCHEMA from '../schemas/registration';
 import ApiClient from '../api/client';
+import ADD_REGISTRATION_SCHEMA from '../schemas/registration';
 
 const faker = require('faker');
 

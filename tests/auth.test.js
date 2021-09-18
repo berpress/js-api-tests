@@ -3,6 +3,7 @@ import {
   AUTH_USER_ERROR_SCHEMA,
   AUTH_USER_SCHEMA,
 } from '../schemas/auth';
+// import { Severity } from "jest-allure/dist/Reporter";
 
 import ApiClient from '../api/client';
 

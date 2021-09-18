@@ -1,7 +1,7 @@
-import validate from '../validator';
-import Requests from '../requests';
-import BaseController from './base.controller';
 import CONFIG from '../../env';
+import Requests from '../requests';
+import validate from '../validator';
+import BaseController from './base.controller';
 
 const client = new Requests();
 class AuthUserController extends BaseController {
