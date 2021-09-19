@@ -21,7 +21,8 @@ class Requests {
   }
 
   body(data) {
-    this.options = { ...this.options, data };
+    const { ...object } = data;
+    this.options = { ...this.options, data: object };
     return this;
   }
 
@@ -37,16 +38,17 @@ class Requests {
   }
 
   async send(nameRequest) {
-    logger.info(nameRequest);
-    logger.info(`Request: method is ${this.options.method}, url is ${this.options.url}, body is ${JSON.stringify(this.options.data, null, 4)}`);
-    const response = await axios({
-      ...this.options,
-    }).catch((error) => {
-      logger.info(`Status code is ${error.response.status}`);
-      return error.response;
-    });
-    logger.info(`Response: status is ${response.status},  body is ${JSON.stringify(this.options.data, null, 4)}`);
-    return response;
+    logger.info(`${nameRequest} request: method is ${this.options.method}, url is ${this.options.url}, body is ${JSON.stringify(this.options.data, null, 4)}`);
+    try {
+      const response = await axios({
+        ...this.options,
+      });
+      logger.info(`${nameRequest} response: status is ${response.status}, body is ${JSON.stringify(this.options.data, null, 4)}`);
+      return response;
+    } catch (e) {
+      logger.info(`${nameRequest} response: status is ${e.status},  body is ${JSON.stringify(this.options.data, null, 4)}`);
+      return e.response;
+    }
   }
 }
 

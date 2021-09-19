@@ -6,16 +6,12 @@ import {
 // import { Severity } from "jest-allure/dist/Reporter";
 
 import ApiClient from '../api/client';
-
-const faker = require('faker');
+import Auth from '../models/authModel';
 
 describe('Auth', () => {
   it('user with valid data', async () => {
     const client = new ApiClient();
-    const data = {
-      username: faker.internet.email(),
-      password: faker.internet.password(),
-    };
+    const data = new Auth().random();
     const response = await client.register.register(data, ADD_REGISTRATION_SCHEMA);
     expect(response.status).toBe(201);
     expect(response.data.message).toBe('User created successfully.');
@@ -25,10 +21,7 @@ describe('Auth', () => {
 
   it('none created user', async () => {
     const client = new ApiClient();
-    const data = {
-      username: faker.internet.email(),
-      password: faker.internet.password(),
-    };
+    const data = new Auth().random();
     const responseAuth = await client.auth.auth(data, AUTH_USER_ERROR_SCHEMA);
     expect(responseAuth.status).toBe(401);
   });
