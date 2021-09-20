@@ -32,7 +32,8 @@ class Requests {
   }
 
   headers(token) {
-    const headers = { token };
+    const headers = (token === null) ? null : { Authorization: `JWT ${token}` };
+    // const headers = { Authorization: `JWT ${token}` };
     this.options = { ...this.options, headers };
     return this;
   }
@@ -43,7 +44,7 @@ class Requests {
       const response = await axios({
         ...this.options,
       });
-      logger.info(`${nameRequest} response: status is ${response.status}, body is ${JSON.stringify(this.options.data, null, 4)}`);
+      logger.info(`${nameRequest} response: status is ${response.status}, body is ${JSON.stringify(response.data, null, 4)}`);
       return response;
     } catch (e) {
       logger.info(`${nameRequest} response: status is ${e.status},  body is ${JSON.stringify(this.options.data, null, 4)}`);
