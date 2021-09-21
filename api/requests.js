@@ -47,7 +47,7 @@ class Requests {
       logger.info(`${nameRequest} response: status is ${response.status}, body is ${JSON.stringify(response.data, null, 4)}`);
       return response;
     } catch (e) {
-      logger.info(`${nameRequest} response: status is ${e.status},  body is ${JSON.stringify(this.options.data, null, 4)}`);
+      logger.info(`${nameRequest} response: status is ${e.response.status},  body is ${JSON.stringify(e.response.data, null, 4)}`);
       return e.response;
     }
   }

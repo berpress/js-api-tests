@@ -12,8 +12,8 @@ class UserInfoController extends BaseController {
     return response;
   }
 
-  async getUserInfo(data, schema) {
-    const response = await client.url(`${(CONFIG.BASE_URL)}/register`).headers(this.params.token).method('POST').body(data)
+  async getUserInfo(userId, schema) {
+    const response = await client.url(`${(CONFIG.BASE_URL)}/user_info/${userId}`).headers(this.params.token).method('GET')
       .send('Register new user');
     validate(schema, response.data);
     return response;
