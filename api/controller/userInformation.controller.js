@@ -19,16 +19,16 @@ class UserInfoController extends BaseController {
     return response;
   }
 
-  async deleteUserInfo(data, schema) {
-    const response = await client.url(`${(CONFIG.BASE_URL)}/register`).headers(this.params.token).method('POST').body(data)
-      .send('Register new user');
+  async deleteUserInfo(userId, schema) {
+    const response = await client.url(`${(CONFIG.BASE_URL)}/user_info/${userId}`).headers(this.params.token).method('DELETE')
+      .send('Delete user information');
     validate(schema, response.data);
     return response;
   }
 
   async editUserInfo(userId, data, schema) {
     const response = await client.url(`${(CONFIG.BASE_URL)}/user_info/${userId}`).headers(this.params.token).method('PUT').body(data)
-      .send('Edit new user');
+      .send('Edit user information');
     validate(schema, response.data);
     return response;
   }
