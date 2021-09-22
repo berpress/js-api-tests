@@ -14,7 +14,7 @@ class UserInfoController extends BaseController {
 
   async getUserInfo(userId, schema) {
     const response = await client.url(`${(CONFIG.BASE_URL)}/user_info/${userId}`).headers(this.params.token).method('GET')
-      .send('Register new user');
+      .send('Get user information');
     validate(schema, response.data);
     return response;
   }
@@ -26,9 +26,9 @@ class UserInfoController extends BaseController {
     return response;
   }
 
-  async editUserInfo(data, schema) {
-    const response = await client.url(`${(CONFIG.BASE_URL)}/register`).headers(this.params.token).method('POST').body(data)
-      .send('Register new user');
+  async editUserInfo(userId, data, schema) {
+    const response = await client.url(`${(CONFIG.BASE_URL)}/user_info/${userId}`).headers(this.params.token).method('PUT').body(data)
+      .send('Edit new user');
     validate(schema, response.data);
     return response;
   }
