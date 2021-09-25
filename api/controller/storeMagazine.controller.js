@@ -14,7 +14,7 @@ class StoreMagazineController extends BaseController {
 
   async getStore(data, schema) {
     const response = await client.url(`${(CONFIG.BASE_URL)}/store/${data.name}`).headers(this.params.token).method('GET')
-      .send('Add new store');
+      .send('Get new store');
     validate(schema, response.data);
     return response;
   }
