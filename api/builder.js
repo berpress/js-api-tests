@@ -7,6 +7,8 @@ import UserInfo from '../models/userInfoModel';
 import { ADD_USER_INFO_SCHEMA } from '../schemas/userInfo';
 import Store from '../models/storeModel';
 import ADD_STORE_SCHEMA from '../schemas/store';
+import { Item, ItemBody } from '../models/itemModel';
+import { ADD_ITEM_SCHEMA } from '../schemas/item';
 
 class BuilderStore {
   constructor(builder) {
@@ -14,7 +16,8 @@ class BuilderStore {
     this.token = builder.token;
     this.userInfo = builder.userInfo;
     this.userId = builder.userId;
-    this.store = builder;
+    this.store = builder.store;
+    this.item = builder.item;
   }
 }
 
@@ -50,6 +53,15 @@ class Builder {
     const name = new Store().random();
     const response = await this.client.storeMagazine.addStore(name, ADD_STORE_SCHEMA);
     this.store = { name: name.name, uuid: response.data.uuid };
+    return this;
+  }
+
+  async addItem() {
+    this.client = new ApiClient({ token: this.token });
+    const name = new Item().random();
+    const body = new ItemBody(100, this.store.uuid);
+    const response = await this.client.storeItems.addItem(name.name, body, ADD_ITEM_SCHEMA);
+    this.item = { name: name.name, price: response.data.price, itemId: response.data.itemID };
     return this;
   }
 

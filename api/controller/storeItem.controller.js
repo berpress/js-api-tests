@@ -11,6 +11,13 @@ class StoreItemController extends BaseController {
     validate(schema, response.data);
     return response;
   }
+
+  async getItem(name, schema) {
+    const response = await client.url(`${(CONFIG.BASE_URL)}/item/${name}`).headers(this.params.token).method('GET')
+      .send('Get new store');
+    validate(schema, response.data);
+    return response;
+  }
 }
 
 export default StoreItemController;
