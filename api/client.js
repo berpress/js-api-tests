@@ -8,6 +8,7 @@ import ADD_REGISTRATION_SCHEMA from '../schemas/registration';
 import { AUTH_USER_SCHEMA } from '../schemas/auth';
 import StoreMagazineController from './controller/storeMagazine.controller';
 import StoreItemController from './controller/storeItem.controller';
+import BalanceController from './controller/balance.controller';
 
 class ApiClient {
   constructor(params = { token: null, cookies: CookieJar }) {
@@ -23,6 +24,7 @@ class ApiClient {
     this.userInfo = new UserInfoController(mergedParams);
     this.storeMagazine = new StoreMagazineController(mergedParams);
     this.storeItems = new StoreItemController(mergedParams);
+    this.balance = new BalanceController(mergedParams);
   }
 
   // eslint-disable-next-line class-methods-use-this

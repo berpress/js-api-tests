@@ -9,6 +9,8 @@ import Store from '../models/storeModel';
 import ADD_STORE_SCHEMA from '../schemas/store';
 import { Item, ItemBody } from '../models/itemModel';
 import { ADD_ITEM_SCHEMA } from '../schemas/item';
+import Balance from '../models/balanceModel';
+import ADD_BALANCE_SCHEMA from '../schemas/balance';
 
 class BuilderStore {
   constructor(builder) {
@@ -18,6 +20,7 @@ class BuilderStore {
     this.userId = builder.userId;
     this.store = builder.store;
     this.item = builder.item;
+    this.balance = builder.balance;
   }
 }
 
@@ -62,6 +65,14 @@ class Builder {
     const body = new ItemBody(100, this.store.uuid);
     const response = await this.client.storeItems.addItem(name.name, body, ADD_ITEM_SCHEMA);
     this.item = { name: name.name, price: response.data.price, itemId: response.data.itemID };
+    return this;
+  }
+
+  async addBalance() {
+    this.client = new ApiClient({ token: this.token });
+    const data = new Balance().random();
+    const response = await this.client.balance.addBalance(this.userId, data, ADD_BALANCE_SCHEMA);
+    this.balance = { balance: response.data.balance };
     return this;
   }
 
