@@ -1,6 +1,9 @@
 # JavaScript API tests
 [![NodeJS Tests CI](https://github.com/berpress/js-api-tests/actions/workflows/tests.yml/badge.svg)](https://github.com/berpress/js-api-tests/actions/workflows/tests.yml)
 
+![](images/jest.png)
+
+
 This is a tutorial project that shows how to implement api tests in JS. The test application simulates the operation of a store. 
 You can create users, add an item and pay for it.
 
