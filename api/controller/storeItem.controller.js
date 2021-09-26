@@ -18,6 +18,13 @@ class StoreItemController extends BaseController {
     validate(schema, response.data);
     return response;
   }
+
+  async editItem(name, data, schema) {
+    const response = await client.url(`${(CONFIG.BASE_URL)}/item/${name}`).headers(this.params.token).body(data).method('PUT')
+      .send('Edit item');
+    validate(schema, response.data);
+    return response;
+  }
 }
 
 export default StoreItemController;
