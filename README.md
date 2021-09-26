@@ -32,4 +32,8 @@ npm install
 
 and add pre-commit https://www.npmjs.com/package/husky
 
-### To be continued...
+Also, you can use Docker and test this app local
+```
+docker pull litovsky/flask_store_app
+docker run -p 5000:5000 litovsky/flask_store_app
+```
