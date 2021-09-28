@@ -37,6 +37,11 @@ npm install
 
 and add pre-commit https://www.npmjs.com/package/husky
 
+Some requests require an authorization token. Use header like 
+```angular2html
+"Authorization": "JWT {token}"
+```
+
 Also, you can use Docker and test this app local
 ```
 docker pull litovsky/flask_store_app
