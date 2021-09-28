@@ -23,6 +23,8 @@ url: https://stores-tests-api.herokuapp.com
 
 swagger: https://app.swaggerhub.com/apis/berpress/flask-rest-api/1.0.0
 
+description: https://berpress.github.io/flask-restful-api/ (🇬🇧, 🇷🇺)
+
 ### How to start
 
 Use js
