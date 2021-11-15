@@ -5,6 +5,8 @@ export const ADD_ITEM_SCHEMA = Joi.object({
   name: Joi.string(),
   price: Joi.number(),
   itemID: Joi.number(),
+  description: Joi.string().allow('', null).default(null),
+  image: Joi.string().allow('', null).default(null),
 });
 
 const PRICE = Joi.object({

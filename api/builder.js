@@ -62,7 +62,7 @@ class Builder {
   async addItem() {
     this.client = new ApiClient({ token: this.token });
     const name = new Item().random();
-    const body = new ItemBody(100, this.store.uuid);
+    const body = new ItemBody(100, this.store.uuid, 'Test description', 'image.png');
     const response = await this.client.storeItems.addItem(name.name, body, ADD_ITEM_SCHEMA);
     this.item = { name: name.name, price: response.data.price, itemId: response.data.itemID };
     return this;

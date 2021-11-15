@@ -17,7 +17,7 @@ describe('Add item', () => {
     await builder.addStore();
     builder.build();
     const name = new Item().random();
-    const body = new ItemBody(100, builder.store.uuid);
+    const body = new ItemBody(100, builder.store.uuid, 'Test description', 'image.png');
     const response = await client.storeItems.addItem(name.name, body, ADD_ITEM_SCHEMA);
     expect(response.status).toBe(201);
     expect(response.data.name).toBe(name.name);
@@ -57,7 +57,7 @@ describe('Add item', () => {
     expect(response.data.name).toBe(name.name);
     const responseDouble = await client.storeItems.addItem(name.name, body, MESSAGE_SCHEMA);
     expect(responseDouble.status).toBe(400);
-    expect(responseDouble.data.message).toBe(`An item with name '${name.name}' already exists.`);
+    expect(responseDouble.data.message).toBe(`An item with name ${name.name} already exists.`);
   });
 
   it('with invalid price', async () => {

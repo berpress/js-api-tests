@@ -13,14 +13,19 @@ export class Item {
 }
 
 export class ItemBody {
-  constructor(price = undefined, id = undefined) {
+  constructor(price = undefined, id = undefined,
+    description = undefined, image = undefined) {
     this.price = price;
     this.store_id = id;
+    this.description = description;
+    this.image = image;
   }
 
   random() {
     const price = (this.price === undefined) ? 100 : this.price;
     const id = (this.store_id === undefined) ? 1 : this.store_id;
-    return new ItemBody(price, id);
+    const description = (this.description === undefined) ? 'Test description' : this.description;
+    const image = (this.image === undefined) ? 'test.png' : this.store_id;
+    return new ItemBody(price, id, description, image);
   }
 }
