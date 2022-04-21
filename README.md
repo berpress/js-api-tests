@@ -30,7 +30,6 @@ description: https://berpress.github.io/flask-restful-api/ (🇬🇧, 🇷🇺)
 Use js
 
 Install packages
-
 ```
 npm install
 ```
